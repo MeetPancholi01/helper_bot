@@ -1,19 +1,25 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.options import Options
-options = webdriver.ChromeOptions()
-options.add_argument('--ignore-certificate-errors-spki-list')
-options.add_argument('--ignore-ssl-errors')
-def execute(mssg = 'Python'):
-    chr_options = Options()
-    chr_options.add_experimental_option("detach", True)
+#from selenium.webdriver.chrome.options import Options
+import os
 
-    driver = webdriver.Chrome(options=chr_options)
+def execute(mssg = 'Python'):
+    #chr_options = Options()
+    #chr_options.add_experimental_option("detach", True)
+    options = webdriver.ChromeOptions()
+    options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    #options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-sh-usage")
+    options.add_argument('--ignore-certificate-errors-spki-list')
+    options.add_argument('--ignore-ssl-errors')
+
+    driver = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH"),chrome_options=options)
 
     driver.get('https://youtube.com')
 
-    driver.maximize_window()
+    #driver.maximize_window()
 
     searchbox = driver.find_element_by_xpath('/html/body/ytd-app/div/div/ytd-masthead/div[3]/div[2]/ytd-searchbox/form/div[1]/div[1]/input')
 
@@ -30,7 +36,16 @@ def execute(mssg = 'Python'):
 
 def execute_search(mssg):
 
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    #options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-sh-usage")
+    options.add_argument('--ignore-certificate-errors-spki-list')
+    options.add_argument('--ignore-ssl-errors')
+
+    driver = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH"),chrome_options=options)
+
 
     driver.get('https://google.com')
 
@@ -59,10 +74,19 @@ def execute_search(mssg):
 #     return 'https://www.google.com/search?q=Latest+News&source=lnms&tbm=nws&sa=X&ved=2ahUKEwjDlKb54J_1AhXIxYsBHTguAO8Q_AUoAXoECAEQAw&biw=1536&bih=708&dpr=1.25'
 
 def news_mod(query):
-    driver = webdriver.Chrome()
+    
+    options = webdriver.ChromeOptions()
+    options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-sh-usage")
+    options.add_argument('--ignore-certificate-errors-spki-list')
+    options.add_argument('--ignore-ssl-errors')
+
+    driver = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH"),chrome_options=options)
     driver.get('https://google.com')
 
-    driver.maximize_window()
+    #driver.maximize_window()
 
     searchbox = driver.find_element_by_xpath('/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div[2]/div[2]/input')
 
@@ -83,12 +107,18 @@ def news_mod(query):
 
     
 
-
-
-
 def play_music(name = None):
     if name == None:
-        driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        #options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-sh-usage")
+        options.add_argument('--ignore-certificate-errors-spki-list')
+        options.add_argument('--ignore-ssl-errors')
+
+        driver = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH"),chrome_options=options)
+        #driver = webdriver.Chrome()
 
         driver.get('https://google.com')
 
@@ -104,7 +134,15 @@ def play_music(name = None):
         return
     
     else:
-        driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        #options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-sh-usage")
+        options.add_argument('--ignore-certificate-errors-spki-list')
+        options.add_argument('--ignore-ssl-errors')
+        #driver = webdriver.Chrome()
+        driver = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH"),chrome_options=options)
 
         driver.get('https://google.com')
 
