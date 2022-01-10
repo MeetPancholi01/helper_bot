@@ -4,7 +4,8 @@ import os
 def covid_state(state='Gujarat'):
     state = state.lower()
     state = state + ' '
-
+    GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
     options = webdriver.ChromeOptions()
     options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     options.add_argument('--ignore-certificate-errors-spki-list')
