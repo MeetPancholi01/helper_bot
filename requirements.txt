@@ -35,8 +35,6 @@ PyMsgBox==1.0.9
 pyparsing==2.4.7
 PyPDF2==1.26.0
 pyperclip==1.8.2
-pypiwin32
-PyPrind==2.11.3
 PyScreeze==0.1.27
 pySmartDL==1.3.4
 python-docx==0.8.11
