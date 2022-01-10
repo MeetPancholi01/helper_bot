@@ -7,6 +7,8 @@ import os
 def execute(mssg = 'Python'):
     #chr_options = Options()
     #chr_options.add_experimental_option("detach", True)
+    GOOGLE_CHROME_BIN = '/app/.apt/usr/bin/google_chrome'
+    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
     options = webdriver.ChromeOptions()
     options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     #options.add_argument("--headless")
@@ -35,6 +37,8 @@ def execute(mssg = 'Python'):
     return
 
 def execute_search(mssg):
+    GOOGLE_CHROME_BIN = '/app/.apt/usr/bin/google_chrome'
+    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 
     options = webdriver.ChromeOptions()
     options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -74,6 +78,8 @@ def execute_search(mssg):
 #     return 'https://www.google.com/search?q=Latest+News&source=lnms&tbm=nws&sa=X&ved=2ahUKEwjDlKb54J_1AhXIxYsBHTguAO8Q_AUoAXoECAEQAw&biw=1536&bih=708&dpr=1.25'
 
 def news_mod(query):
+    GOOGLE_CHROME_BIN = '/app/.apt/usr/bin/google_chrome'
+    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
     
     options = webdriver.ChromeOptions()
     options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -108,6 +114,8 @@ def news_mod(query):
     
 
 def play_music(name = None):
+        GOOGLE_CHROME_BIN = '/app/.apt/usr/bin/google_chrome'
+        CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
     if name == None:
         options = webdriver.ChromeOptions()
         options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
