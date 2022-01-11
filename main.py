@@ -9,7 +9,7 @@ with open('key.txt','r') as f:
 # print(TOKEN)
 
 def start(update,context):
-    update.message.reply_text('Welocme to Shadow Bot!')
+    update.message.reply_text('Welcome to Shadow Bot!')
 
 def help(update,context):
     update.message.reply_text('''
