@@ -4,15 +4,15 @@ import os
 def covid_state(state='Gujarat'):
     state = state.lower()
     state = state + ' '
-    GOOGLE_CHROME_BIN = '/app/.apt/usr/bin/google_chrome'
-    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+    #GOOGLE_CHROME_BIN = '/app/.apt/usr/bin/google_chrome'
+    #CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
     options = webdriver.ChromeOptions()
     options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-    options.add_argument('--ignore-certificate-errors-spki-list')
-    options.add_argument('--ignore-ssl-errors')
+    #options.add_argument('--ignore-certificate-errors-spki-list')
+    #options.add_argument('--ignore-ssl-errors')
     options.add_argument('--headless')
+    options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-sh-usage')
 
     driver = webdriver.Chrome(executable_path = os.environ.get("CHROMEDRIVER_PATH"),chrome_options=options)
 
