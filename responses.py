@@ -6,6 +6,7 @@ import time
 import random
 import math
 import pyjokes
+import pytz
 import webbrowser as wb
 import covid_scr
 import covid_state_scr2
@@ -14,11 +15,11 @@ from iso3166 import countries
 arr = ['music.youtube','open.spotify','jiosaavn']
 states = ["Andhra Pradesh","Arunachal Pradesh ","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Lakshadweep","Delhi","Puducherry"]
 # from selenium.webdriver.common.keys import Keys
-
+IST = pytz.timezone('Asia/Kolkata')
 d = dt.date.today()
 curr_time = time.localtime()
 curr_clock = time.strftime("%H:%M:%S", curr_time)
-t = curr_clock
+t = dt.datetime.now(IST)
 day = dt.datetime.today().weekday()
 arr = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 
@@ -62,7 +63,7 @@ def get_response(message):
         return f"\nToday's day is {arr[day]}"
 
     elif 'time' in mssg:
-        return f"\nCurrent time is {t}"
+        return f"\nCurrent time in IST: {t}"
 
     elif 'learn' in mssg:
         index = mssg.index('learn')
