@@ -20,7 +20,7 @@ def covid_state(state='Gujarat'):
 
     driver.implicitly_wait(20)
 
-#driver.maximize_window()
+    driver.maximize_window()
     try:
         #Headings = driver.find_element_by_xpath('html/body/div/div/div[3]/div/div[3]/div[2]/div[1]/div[1]').text
         Headings = driver.find_element_by_xpath('html/body/div/div/div[3]/div/div[3]/div[2]/div[1]/div[1]').text
