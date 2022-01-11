@@ -11,8 +11,8 @@ def covid_state(state='Gujarat'):
     #options.add_argument('--ignore-certificate-errors-spki-list')
     #options.add_argument('--ignore-ssl-errors')
     options.add_argument('--headless')
-    options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
 
     driver = webdriver.Chrome(executable_path = os.environ.get("CHROMEDRIVER_PATH"),chrome_options=options)
 
@@ -97,7 +97,7 @@ def covid_state(state='Gujarat'):
     for i in range(len(final)-1):
         if final[i][0].lower() == state:
             return final[i],he
-    return 'Oops, Looks like some error occured !'
+    return 'Oops, Looks like some error occured !','None'
 #print(headings)
 #print(country_stats)
 #print(covid_state('Gujarat'))
