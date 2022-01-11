@@ -165,7 +165,7 @@ def get_response(message):
             mssg = mssg[1:]
             query = ''.join(mssg)
             wb.get("GOOGLE_CHROME_BIN").open(query)
-            wb.open(query)
+            #wb.open(query)
             return
         except:
             return 'Some error occured while using chrome browser!'
