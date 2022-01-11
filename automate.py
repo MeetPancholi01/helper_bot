@@ -176,10 +176,13 @@ def play_music(name = None):
         try:
             dd = driver.find_element_by_xpath('/html/body/ytmusic-app/ytmusic-app-layout/div[3]/ytmusic-search-page/ytmusic-tabbed-search-results-renderer/div[2]/ytmusic-section-list-renderer/div[2]/ytmusic-shelf-renderer[1]/div[2]/ytmusic-responsive-list-item-renderer/div[2]/div[1]/yt-formatted-string/a')
             dd.click()
+            
 
         except:
             dd = driver.find_element_by_xpath('/html/body/ytmusic-app/ytmusic-app-layout/div[3]/ytmusic-search-page/ytmusic-tabbed-search-results-renderer/div[2]/ytmusic-section-list-renderer/div[2]/ytmusic-shelf-renderer[2]/div[2]/ytmusic-responsive-list-item-renderer[1]/div[2]/div[1]/yt-formatted-string/a')
             dd.click()
+        
+        return
         
         #dl = driver.find_element_by_xpath('/html/body/div[1]/div[2]/header/aside/div[2]/div/div[1]/article/div[1]/figure/figcaption/h4/a')
 
