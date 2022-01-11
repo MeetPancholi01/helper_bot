@@ -168,7 +168,7 @@ def get_response(message):
             wb.open(query)
             return
         except:
-            return 'Oops either you do not have chrome or the chrome path assumed by me on your system is incorrect, this function will not work, put your chrome this way C:\Program Files\Google\Chrome\Application\chrome.exe'
+            return 'Some error occured while using chrome browser!'
 
     elif 'covid-19' in mssg or 'covid' in mssg or 'corona' in mssg or 'Covid' in mssg:
         k1 = bool_country(mssg)
