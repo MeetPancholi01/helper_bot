@@ -2,6 +2,7 @@ import re
 import datetime as dt
 import automate
 import wikipedia
+import time
 import random
 import math
 import pyjokes
@@ -15,7 +16,9 @@ states = ["Andhra Pradesh","Arunachal Pradesh ","Assam","Bihar","Chhattisgarh","
 # from selenium.webdriver.common.keys import Keys
 
 d = dt.date.today()
-t = dt.datetime.now()
+curr_time = time.localtime()
+curr_clock = time.strftime("%H:%M:%S", curr_time)
+t = curr_clock
 day = dt.datetime.today().weekday()
 arr = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 
