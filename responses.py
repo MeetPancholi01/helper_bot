@@ -87,7 +87,7 @@ def get_response(message):
                 res = wikipedia.summary(query,sentences=10)
                 return res
             except:
-                automate.execute_search(query)
+                #automate.execute_search(query)
                 q = ''
                 for i in query:
                     if i != ' ':
