@@ -39,8 +39,8 @@ def process_mssg(message):
     return pattern
 
 def get_response(message):
-    GOOGLE_CHROME_BIN = '/app/.apt/usr/bin/google_chrome'
-    CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+    #GOOGLE_CHROME_BIN = '/app/.apt/usr/bin/google_chrome'
+    #CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
     mssg = process_mssg(message)
     if 'hello' in mssg or 'hii' in mssg or 'Hii' in mssg:
         return 'Hii, nice to talk to you sir !'
@@ -164,7 +164,7 @@ def get_response(message):
             #chromepath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
             mssg = mssg[1:]
             query = ''.join(mssg)
-            wb.get(GOOGLE_CHROME_BIN).open(query)
+            wb.get("GOOGLE_CHROME_BIN").open(query)
             wb.open(query)
             return
         except:
