@@ -133,7 +133,7 @@ def get_response(message):
     elif 'play' in mssg and 'music' not in mssg:
         num = math.floor((random.random())*3)
         query = ' '.join(mssg[1:])
-        automate.play_music(query)
+        #automate.play_music(query)
         if num == 0:
             q = ''
             for i in query:
