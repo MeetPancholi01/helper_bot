@@ -1,10 +1,16 @@
 from selenium import webdriver
-
-driver  = webdriver.Chrome()
-driver.get('https://prsindia.org/covid-19/cases')
-driver.maximize_window()
+import os
 
 def covid_state(state='Gujarat'):
+    options = webdriver.ChromeOptions()
+    options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+
+    driver  = webdriver.Chrome(executable_path = os.environ.get("CHROMEDRIVER_PATH"),chrome_options=options)
+    driver.get('https://prsindia.org/covid-19/cases')
+    driver.maximize_window()
     headings = []
     processing = True
     i = 2
@@ -48,4 +54,4 @@ def covid_state(state='Gujarat'):
 
     return 'Please recheck the state name,I was not able to find this state.'
 
-print(covid_state('Gujarat'))
+#print(covid_state('Gujarat'))
