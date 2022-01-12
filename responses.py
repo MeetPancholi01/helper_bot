@@ -193,6 +193,8 @@ def get_response(message):
         k2 = bool_state(mssg)
         if k1 != None and k2 == None:
             res1,res2 = covid_scr.covid_data_country(k1)
+            if res2 == -1:
+                return 'Check your internet or there might be some error in country spelling you have given'
             return '''{} 
             {} 
             {} 
