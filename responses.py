@@ -189,7 +189,7 @@ def get_response(message):
         elif k1 != None and k2 != None:
             try:
                 res1,res2 = covid_state_scr2.covid_state(k2)
-                if res1[0] in states:
+                if res1[0].strip() in states:
                     return ''' State {}
                     Confirmed Cases {}
                     Active {}
