@@ -82,7 +82,7 @@ def get_response(message):
     elif 'learn' in mssg:
         index = mssg.index('learn')
         query = ' '.join(mssg[index+1:])
-        automate.execute('{}'.format(query))
+        #automate.execute('{}'.format(query))
         q = ''
         for i in query:
             if i != ' ':
