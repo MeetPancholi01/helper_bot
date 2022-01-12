@@ -37,13 +37,17 @@ def bool_country(message):
     return None
 
 def bool_state(message):
+    process = None
     if len(message) > 2 and len(message) <= 10:
         query = message[2:]
         query = ' '.join(query) 
         for i in range(len(states)):
             if query.lower() == states[i].lower():
-                return states[i]
-        return None
+                process = states[i]
+                return process
+            else:
+                continue
+        return process
     else:
         return None
 
