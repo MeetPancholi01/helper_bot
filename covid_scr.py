@@ -38,7 +38,7 @@ def covid_data_country(query='india'):
     tod,yest = process_date(date)
 
     if doc == 'URL not working':
-        return 'Some error occured,check your internet or recheck the spelling of the country you have given.'
+        return 'Some error occured,check your internet or recheck the spelling of the country you have given.',-1
 
     soup = BeautifulSoup(doc,'lxml')
     covid_tod_stats = []
