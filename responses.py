@@ -10,6 +10,7 @@ import pytz
 import webbrowser as wb
 import covid_scr
 import covid_state_scr2
+import covid_state
 from iso3166 import countries
 #print(selenium.__version__())we
 arr = ['music.youtube','open.spotify','jiosaavn']
@@ -186,14 +187,22 @@ def get_response(message):
             {}'''.format(res1[0],res1[1],res1[2],res2[0],res2[1])
 
         elif k1 != None and k2 != None:
-            res1,res2 = covid_state_scr2.covid_state(k2)
-            return ''' State {}
-            Confirmed Cases {}
-            Active {}
-            Recovered {}
-            Deceased {}
-            Tested {}
-            Vaccine Doses Administered {}'''.format(res1[0],res1[1],res1[2],res1[3],res1[4],res1[5],res1[6])
+            try:
+                res1,res2 = covid_state_scr2.covid_state(k2)
+                if res1[0] in states:
+                    return ''' State {}
+                    Confirmed Cases {}
+                    Active {}
+                    Recovered {}
+                    Deceased {}
+                    Tested {}
+                    Vaccine Doses Administered {}'''.format(res1[0],res1[1],res1[2],res1[3],res1[4],res1[5],res1[6])
+                else:
+                    res = covid_state.covid_state(k2)
+                    return res
+            except:
+                res = covid_state.covid_state(k2)
+                return res
 
         else:
             return '''Please recheck the country/state name or try some other name of the same country
