@@ -14,7 +14,7 @@ import covid_state
 from iso3166 import countries
 #print(selenium.__version__())we
 arr = ['music.youtube','open.spotify','jiosaavn']
-states = ["Andhra Pradesh","Arunachal Pradesh ","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Lakshadweep","Delhi","Puducherry"]
+states = ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Lakshadweep","Delhi","Puducherry"]
 # from selenium.webdriver.common.keys import Keys
 IST = pytz.timezone('Asia/Kolkata')
 d = dt.date.today()
@@ -25,18 +25,23 @@ day = dt.datetime.today().weekday()
 arr = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 
 def bool_country(message):
-    for i in message:
-        if i in countries:
-            return i
+    query = message[1:]
+    query = ' '.join(query)
+    if query in countries:
+        return query
+      
     return None
 
 def bool_state(message):
-    for i in range(len(states)):
-        for j in range(len(message)):
-            if message[j].lower() == states[i].lower():
+    if len(message) > 2 and len(message) <= 10:
+        query = message[2:]
+        query = ' '.join(query) 
+        for i in range(len(states)):
+            if query.lower() == states[i].lower():
                 return states[i]
-
-    return None
+        return None
+    else:
+        return None
 
 
 def process_mssg(message):
@@ -206,10 +211,10 @@ def get_response(message):
 
         else:
             return '''Please recheck the country/state name or try some other name of the same country
-            Note -: To retrieve the covid information you can ask me in one of the following ways
+            Note -: To obtain the covid information you can ask me in one of the following ways
             1) covid <country name>
             2) covid india <state name>
-            You can give any normal statement, just any of the above 2 keywords should be there'''
+            '''
 
     else:
         return 'Sorry I am not yet trained to understand things you wrote !'
