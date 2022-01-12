@@ -21,6 +21,8 @@ def covid_data_country(query='india'):
     date = datetime.date.today()
     #print(date)
     #print(str(date))
+    st = query.replace(' ','-')
+    query = st.lower()
     url = 'https://www.worldometers.info/coronavirus/country/{}/'.format(query)
 
     def getHTML_doc(url):
