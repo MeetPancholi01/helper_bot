@@ -25,6 +25,10 @@ day = dt.datetime.today().weekday()
 arr = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 
 def bool_country(message):
+    for i in message:
+        if i in countries:
+            return i
+        
     query = message[1:]
     query = ' '.join(query)
     if query in countries:
