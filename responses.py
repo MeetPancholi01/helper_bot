@@ -27,19 +27,24 @@ arr = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 
 def bool_country(message):
     global country_names
-    for i in message:
-        if i in countries or i in country_names:
-            return i
+    #for i in message:
+    #    if i in countries or i in country_names:
+    #        return i
         
     query = message[1:]
     query = ' '.join(query)
     if query in countries or query in country_names:
         return query
     
-    for i in message:
-        for j in country_names:
-            if i.lower() == j.lower():
-                return i   
+    for i in range(len(country_names)):
+        if query.lower() == country_names[i].lower():
+            return query
+        
+    
+#     for i in message:
+#         for j in country_names:
+#             if i.lower() == j.lower():
+#                 return i   
     return None
 
 def bool_state(message):
