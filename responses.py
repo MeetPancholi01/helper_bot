@@ -30,15 +30,19 @@ def bool_country(message):
     #for i in message:
     #    if i in countries or i in country_names:
     #        return i
-        
-    query = message[1:]
-    query = ' '.join(query)
-    if query in countries or query in country_names:
-        return query
-    
-    for i in range(len(country_names)):
-        if query.lower() == country_names[i].lower():
+    if 'india' not in message:
+        query = message[1:]
+        query = ' '.join(query)
+        if query in countries or query in country_names:
             return query
+    
+        for i in range(len(country_names)):
+            if query.lower() == country_names[i].lower():
+                return query
+            
+    else:
+        return 'india'
+        
         
     
 #     for i in message:
