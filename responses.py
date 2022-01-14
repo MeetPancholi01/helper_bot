@@ -203,12 +203,13 @@ def get_response(message):
 
     elif 'news' in mssg:
         query = ' '.join(mssg)
-        try:
-            res = automate.news_mod(query)
-            return res
-        except:
-            res = news_mod(query)
-            return res
+        
+#       res = automate.news_mod(query)
+        res = news_mod(query)
+        return res
+#         except:
+#             res = news_mod(query)
+#             return res
 
     elif 'music' in mssg:
         num = math.floor((random.random())*3)
