@@ -26,6 +26,39 @@ curr_time = time.localtime()
 curr_clock = time.strftime("%H:%M:%S", curr_time)
 #day = dt.datetime.today().weekday()
 #arr = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+def news_mod(query):
+    #GOOGLE_CHROME_BIN = '/app/.apt/usr/bin/google_chrome'
+    #CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+    
+    options = webdriver.ChromeOptions()
+    options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    #options.add_argument('--ignore-certificate-errors-spki-list')
+    #options.add_argument('--ignore-ssl-errors')
+
+    driver = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH"),chrome_options=options)
+    driver.get('https://google.com')
+
+    #driver.maximize_window()
+
+    searchbox = driver.find_element_by_xpath('/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div[2]/div[2]/input')
+
+    searchbox.send_keys('{}'.format(query))
+    searchbox.send_keys(Keys.RETURN)
+    processing = True
+    i = 2
+    while processing:
+        try:
+            ds = driver.find_element_by_xpath('//div[4]/div/div[1]/div/div[1]/div/div[{}]/a'.format(i)).text
+            if ds == 'News':
+                target = driver.find_element_by_xpath('//div[4]/div/div[1]/div/div[1]/div/div[{}]/a'.format(i)).get_attribute('href')
+                return target
+        except:
+            return 'https://www.google.com/search?q=Latest+News&source=lnms&tbm=nws&sa=X&ved=2ahUKEwjDlKb54J_1AhXIxYsBHTguAO8Q_AUoAXoECAEQAw&biw=1536&bih=708&dpr=1.25'
+
+        i += 1
 def get_date():
     d = dt.date.today()
     return d
@@ -170,8 +203,12 @@ def get_response(message):
 
     elif 'news' in mssg:
         query = ' '.join(mssg)
-        res = automate.news_mod(query)
-        return res
+        try:
+            res = automate.news_mod(query)
+            return res
+        except:
+            res = news_mod(query)
+            return res
 
     elif 'music' in mssg:
         num = math.floor((random.random())*3)
