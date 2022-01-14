@@ -27,8 +27,8 @@ def get_date():
     return d
 
 def get_time():
-    #IST = pytz.timezone('Asia/Kolkata')
-    t = dt.datetime.now()
+    IST = pytz.timezone('Asia/Kolkata')
+    t = dt.datetime.now(IST)
     return t
 
 def get_day():
