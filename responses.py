@@ -76,8 +76,7 @@ def news_mod(query):
                 return target
         except:
             return 'https://www.google.com/search?q=Latest+News&source=lnms&tbm=nws&sa=X&ved=2ahUKEwjDlKb54J_1AhXIxYsBHTguAO8Q_AUoAXoECAEQAw&biw=1536&bih=708&dpr=1.25'
-    return None
-
+        
         i += 1
 def get_date():
     d = dt.date.today()
