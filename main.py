@@ -3,8 +3,8 @@ import responses
 import os
 
 PORT = int(os.environ.get('PORT',80))
-with open('key.txt','r') as f:
-    TOKEN = f.read()
+#with open('key.txt','r') as f:
+#    TOKEN = f.read()
 
 # print(TOKEN)
 
@@ -33,6 +33,7 @@ def handle_message(update,context):
 
 
 def main():
+    TOKEN = '5089792481:AAEdlNVSpBdnq6DDRN4wsL9l0313LXPgVTo'
     updater = telegram.ext.Updater(TOKEN,use_context=True)
 
     disp = updater.dispatcher
