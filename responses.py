@@ -26,6 +26,25 @@ curr_time = time.localtime()
 curr_clock = time.strftime("%H:%M:%S", curr_time)
 #day = dt.datetime.today().weekday()
 #arr = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+def news_mod2(query):
+    options = webdriver.ChromeOptions()
+    options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    #options.add_argument('--ignore-certificate-errors-spki-list')
+    #options.add_argument('--ignore-ssl-errors')
+
+    driver = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH"),chrome_options=options)
+    try:
+        driver.get('https://news.google.com/search?q={}&hl=en-IN&gl=IN&ceid=IN%3Aen'.format(query))
+        ele = driver.find_element_by_xpath("//a[@class='NAv2Bc']").get_attribute('href')
+        return ele
+    
+    except:
+        return 'https://news.google.com/search?q={}&hl=en-IN&gl=IN&ceid=IN%3Aen'.format(query)
+    return None
+    
 def news_mod(query):
     #GOOGLE_CHROME_BIN = '/app/.apt/usr/bin/google_chrome'
     #CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
@@ -57,6 +76,7 @@ def news_mod(query):
                 return target
         except:
             return 'https://www.google.com/search?q=Latest+News&source=lnms&tbm=nws&sa=X&ved=2ahUKEwjDlKb54J_1AhXIxYsBHTguAO8Q_AUoAXoECAEQAw&biw=1536&bih=708&dpr=1.25'
+    return None
 
         i += 1
 def get_date():
@@ -202,11 +222,18 @@ def get_response(message):
                return 'https://en.wikipedia.org/wiki/{}'.format(q)
 
     elif 'news' in mssg:
-        query = ' '.join(mssg)
-        
+        #query = ' '.join(mssg)
 #       res = automate.news_mod(query)
-        res = news_mod(query)
-        return res
+        try:
+            k = mssg[:len(mssg)-1]
+            query = ' '.join(k)
+            res = news_mod2(query)
+            return res
+        except:
+            query = ' '.join(mssg)
+            res = news_mod(query)
+            return res
+            
 #         except:
 #             res = news_mod(query)
 #             return res
