@@ -37,6 +37,7 @@ def news_mod2(query):
 
     driver = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH"),chrome_options=options)
     try:
+        query = query.replace(' ','%20')
         driver.get('https://news.google.com/search?q={}&hl=en-IN&gl=IN&ceid=IN%3Aen'.format(query))
         ele = driver.find_element_by_xpath("//a[@class='NAv2Bc']").get_attribute('href')
         return ele
