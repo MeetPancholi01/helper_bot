@@ -3,7 +3,7 @@ import re
 import os
 def covid_state(state='Gujarat'):
     state = state.lower()
-    state = state + ' '
+    #state = state + ' '
     #GOOGLE_CHROME_BIN = '/app/.apt/usr/bin/google_chrome'
     #CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
     options = webdriver.ChromeOptions()
