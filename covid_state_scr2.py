@@ -46,7 +46,7 @@ def covid_state(state='Gujarat'):
         try:
             country_stats = driver.find_element_by_xpath('html/body/div/div/div[3]/div/div[3]/div[2]/div[1]/div[{}]'.format(j)).text
             country_filt = re.findall(r'\S+',country_stats)
-            print(country_filt)
+            #print(country_filt)
             #st = ' '.join(country_filt)
             #print(st)
             kk = 0
