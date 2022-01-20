@@ -33,7 +33,7 @@ def handle_message(update,context):
 
 
 def main():
-    TOKEN = '5089792481:AAEdlNVSpBdnq6DDRN4wsL9l0313LXPgVTo'
+    TOKEN = '5089792481:AAFHsO24PYM7ITkEOinFc3Yd-c7U1hBpTnc'
     updater = telegram.ext.Updater(TOKEN,use_context=True)
 
     disp = updater.dispatcher
