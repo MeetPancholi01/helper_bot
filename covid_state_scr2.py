@@ -46,58 +46,52 @@ def covid_state(state='Gujarat'):
         try:
             country_stats = driver.find_element_by_xpath('html/body/div/div/div[3]/div/div[3]/div[2]/div[1]/div[{}]'.format(j)).text
             country_filt = re.findall(r'\S+',country_stats)
-            
+            print(country_filt)
             #st = ' '.join(country_filt)
             #print(st)
-            country_filt2 = []
-            pr = True
-            cnt = 1
-            kl = 0
-            while kl <= len(country_filt)-1:
-                st = ''
-                if cnt == 1:
-                    while pr:
-                        st += country_filt[kl] + ' '
-                        kl += 1
-                        if not country_filt[kl].startswith('↑'):
-                            try:
-                                jj = int(country_filt[kl][1])
-                                break
-                            except:
-                                continue
-                        else:
-                            cnt += 1
-                            break
-                    country_filt2.append(st)
+            kk = 0
+            while kk <= len(country_filt)-2:
+                temp = country_filt[0].lower()
+                comp = state[:3]
+                if temp.startswith(comp):
+                    targeted = country_filt
+                    if ' ' in state:
+                        k = state.count(" ")
+                        st = ''
+                        
+                        for i in range(k+1):
+                            st += f'{targeted[i]} '    
+                        
+                        for i in range(k+1):
+                            targeted.pop(0)
+                            
+                        st = st.strip()
+                        targeted.insert(0,st)
+                        
 
-                country_filt2.append(country_filt[kl])
-                kl += 1
-
-            #print(country_filt2)
-                
-            i = 0
-            country_final = []
-            while i <= len(country_filt2)-1:
-                if country_filt2[i].startswith('↑'):
-                    country_final.append(country_filt2[i]+' ' + country_filt2[i+1])
-                    i += 2
-        
-                else:
-                    country_final.append(country_filt2[i])
-                    i += 1
-
-            #print(country_final)
-            final.append(country_final)
+                    return process(targeted)
+                kk += 1
+            
             j += 1
-            #print(final)
-
         except:
             processing = False
-    #print(final[0][0])
-    for i in range(len(final)-1):
-        if final[i][0].lower() == state:
-            return final[i],he
-    return 'Oops, Looks like some error occured !','None'
+           
+       
+    
+
+def process(targeted):
+    i = 0
+    country_final = []
+    while i <= len(targeted)-1:
+        if targeted[i].startswith('↑'):
+            country_final.append(targeted[i]+' ' + targeted[i+1])
+            i += 2
+        
+        else:
+            country_final.append(targeted[i])
+            i += 1
+
+    return country_final
 #print(headings)
 #print(country_stats)
 #print(covid_state('Gujarat'))
