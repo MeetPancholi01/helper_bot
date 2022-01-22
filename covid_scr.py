@@ -71,18 +71,29 @@ def covid_data_country(query='india'):
         res32 = res3[1].text
         covid_yest.append(res31)
         covid_yest.append(res32)
+        covid_yest.append('Updated on {}'.format(yest))
     except:
         y = datetime.date.today()
-        y_1 = y - datetime.timedelta(days=2)
-        y_1 = str(y_1)
-        res2 = soup.find_all('div',id="newsdate"+y_1)
-        covid_yest = []
+        i = 2
+        while i <= 10:
+            try:
+                y_1 = y - datetime.timedelta(days=i)
+                y_1 = str(y_1)
+                res2 = soup.find_all('div',id="newsdate"+y_1)
+                covid_yest = []
 
-        res3 = res2[0].div.div.ul.li.find_all('strong')[0:2]
-        res31 = res3[0].text
-        res32 = res3[1].text
-        covid_yest.append(res31)
-        covid_yest.append(res32)
+                res3 = res2[0].div.div.ul.li.find_all('strong')[0:2]
+        #print(res3)
+                res31 = res3[0].text
+                res32 = res3[1].text
+                covid_yest.append(res31)
+                covid_yest.append(res32)
+                covid_yest.append('Updated on {}'.format(y_1))
+                break
+            except:
+                i += 1
+                if i > 10:
+                    return covid_fin_data_today,None
 
     #print(covid_yest)
 
