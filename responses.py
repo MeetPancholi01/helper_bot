@@ -296,11 +296,17 @@ def get_response(message):
             res1,res2 = covid_scr.covid_data_country(k1)
             if res2 == -1:
                 return 'Check your internet or there might be some error in country spelling you have given'
-            return '''{} 
-            {} 
-            {} 
-            {}
-            {}'''.format(res1[0],res1[1],res1[2],res2[0],res2[1])
+            elif res2 != None:
+                return '''{} 
+                {} 
+                {} 
+                {}
+                {}
+                {}'''.format(res1[0],res1[1],res1[2],res2[0],res2[1],res2[2])
+            else:
+                return '''{}
+                {}
+                {}'''.format(res1[0],res1[1],res1[2])
 
         elif k1 != None and k2 != None:
             try:
