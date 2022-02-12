@@ -184,7 +184,7 @@ def get_response(message):
         if 'wikipedia' not in mssg:
             query = ' '.join(mssg)
             ind = query.index('information')
-            query = query[:ind-1]
+            query = query[:ind]
             #print(query)
             try:
                 res = wikipedia.summary(query,sentences=10)
